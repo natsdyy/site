@@ -161,7 +161,7 @@ const styles = `
   .lp-8 { transform: rotate(315deg) rotateX(20deg); z-index: 4;}
 
   .lotus-center-glow {
-      position: absolute; bottom: -5px; left: 50%;
+      position: absolute; bottom: 15px; left: 50%;
       width: 25px; height: 25px;
       background: radial-gradient(circle, #fff, #ffd700);
       border-radius: 50%;
@@ -266,7 +266,8 @@ const Daisy = ({ x, scale, delay, height }: { x: string, scale: number, delay: s
 
 const LotusCenter = () => (
     <div className="lotus-center-wrapper">
-        <div className="stem thick" style={{ height: `350px`, '--d': '1s' } as any}></div>
+        {/* Changed height from 250px to 400px here */}
+        <div className="stem thick" style={{ height: `400px`, '--d': '1s' } as any}></div>
         <div className="lotus-head-group">
             <div className="l-petal lp-1"></div>
             <div className="l-petal lp-2"></div>
