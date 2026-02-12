@@ -237,6 +237,14 @@ export default function ValentinesSurprise() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [activeLyricIndex, setActiveLyricIndex] = useState(0);
 
+  // --- FIX START: Add isMounted check ---
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  // --- FIX END ---
+
   const lyrics: LyricLine[] = [
     { time: 0, text: 'Come stop the crying, it\'ll be alright.' },
     { time: 5, text: 'Just take my hand, hold it tight.' },
@@ -308,6 +316,12 @@ export default function ValentinesSurprise() {
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
+
+  // --- FIX START: Don't render anything on the server ---
+  if (!isMounted) {
+    return <div className="min-h-screen bg-black" />; // Or return null
+  }
+  // --- FIX END ---
 
   return (
     <>
@@ -485,4 +499,4 @@ export default function ValentinesSurprise() {
       </div>
     </>
   );
-}w
+}
