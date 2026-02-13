@@ -1,25 +1,37 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import type { MetaFunction } from 'react-router'; // 1. Import this type
+import type { MetaFunction } from 'react-router'; 
 import { Heart, Smile, Frown, OctagonAlert } from 'lucide-react';
 
-// 2. Add this META function to define the preview image
+// ---------------------------------------------------------
+// THIS MAKES THE LINK LOOK LIKE A CREMATORIUM SITE
+// ---------------------------------------------------------
 export const meta: MetaFunction = () => {
   return [
-    { title: "Happy Valentines!! 💗" },
-    { name: "description", content: "✨ Are you ready to see more? ✨" },
+    // Browser Tab Title
+    { title: "Dearly Departed Crematorium" },
     
-    // This sets the Preview Image to ddc.png
+    // Description (Make it sound real!)
+    { name: "description", content: "Compassionate, dignified, and affordable cremation services for your loved ones." },
+
+    // Open Graph / Discord / iMessage / Facebook
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: "Dearly Departed Crematorium" },
+    { property: "og:description", content: "Compassionate, dignified, and affordable cremation services for your loved ones." },
+    // This points to your logo file in the public folder
     { property: "og:image", content: "/ddc.png" },
-    { property: "og:title", content: "Happy Valentines!! 💗" },
-    { property: "og:description", content: "✨ Are you ready to see more? ✨" },
-    
-    // Twitter / X settings
+
+    // Twitter / X
     { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: "Dearly Departed Crematorium" },
+    { name: "twitter:description", content: "Compassionate, dignified, and affordable cremation services for your loved ones." },
     { name: "twitter:image", content: "/ddc.png" },
   ];
 };
 
+// ---------------------------------------------------------
+// MAIN VALENTINE COMPONENT (Remains the same)
+// ---------------------------------------------------------
 export default function Valentines() {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
