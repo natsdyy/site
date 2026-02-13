@@ -1,33 +1,25 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import type { MetaFunction } from 'react-router'; // Import type for TS
+import type { MetaFunction } from 'react-router'; // 1. Import this type
 import { Heart, Smile, Frown, OctagonAlert } from 'lucide-react';
 
-// ---------------------------------------------------------
-// THIS SECTION CONTROLS THE SHARED STICKER/IMAGE
-// ---------------------------------------------------------
+// 2. Add this META function to define the preview image
 export const meta: MetaFunction = () => {
   return [
     { title: "Happy Valentines!! 💗" },
     { name: "description", content: "✨ Are you ready to see more? ✨" },
     
-    // Open Graph / Discord / iMessage / Facebook
-    { property: "og:type", content: "website" },
+    // This sets the Preview Image to ddc.png
+    { property: "og:image", content: "/ddc.png" },
     { property: "og:title", content: "Happy Valentines!! 💗" },
     { property: "og:description", content: "✨ Are you ready to see more? ✨" },
-    { property: "og:image", content: "/ddc.png" }, // This points to public/ddc.png
-
-    // Twitter
+    
+    // Twitter / X settings
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: "Happy Valentines!! 💗" },
-    { name: "twitter:description", content: "✨ Are you ready to see more? ✨" },
     { name: "twitter:image", content: "/ddc.png" },
   ];
 };
 
-// ---------------------------------------------------------
-// MAIN COMPONENT
-// ---------------------------------------------------------
 export default function Valentines() {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
