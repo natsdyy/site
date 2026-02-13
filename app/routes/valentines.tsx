@@ -1,7 +1,33 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import type { MetaFunction } from 'react-router'; // Import type for TS
 import { Heart, Smile, Frown, OctagonAlert } from 'lucide-react';
 
+// ---------------------------------------------------------
+// THIS SECTION CONTROLS THE SHARED STICKER/IMAGE
+// ---------------------------------------------------------
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Happy Valentines!! 💗" },
+    { name: "description", content: "✨ Are you ready to see more? ✨" },
+    
+    // Open Graph / Discord / iMessage / Facebook
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: "Happy Valentines!! 💗" },
+    { property: "og:description", content: "✨ Are you ready to see more? ✨" },
+    { property: "og:image", content: "/ddc.png" }, // This points to public/ddc.png
+
+    // Twitter
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: "Happy Valentines!! 💗" },
+    { name: "twitter:description", content: "✨ Are you ready to see more? ✨" },
+    { name: "twitter:image", content: "/ddc.png" },
+  ];
+};
+
+// ---------------------------------------------------------
+// MAIN COMPONENT
+// ---------------------------------------------------------
 export default function Valentines() {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
@@ -16,27 +42,23 @@ export default function Valentines() {
     }
   };
 
-  // We store the Lucide component directly in the step object
   const steps = [
     {
       title: '💗 Happy Valentines!! 💗',
       message: '✨ Are you ready to see more? ✨',
       image: '/valentines.webp',
-      // Happy Icon
       icon: <Smile className="w-full h-full text-yellow-300 drop-shadow-md" />,
     },
     {
       title: '🥺 Why not ready? 🥺',
       message: '💕 Please say yes!! 💕',
       image: '/please.webp',
-      // Sad Icon
       icon: <Frown className="w-full h-full text-blue-300 drop-shadow-md" />,
     },
     {
       title: '😤 You need to say yes 😤',
       message: '⏰ right now! ⏰',
       image: '/needtosayyes.webp',
-      // Angry/Warning Icon
       icon: <OctagonAlert className="w-full h-full text-red-500 drop-shadow-md" />,
     },
   ];
